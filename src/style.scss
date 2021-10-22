@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+$badge-shadow: -1px 5px 10px rgba(0, 0, 0, 0.514);
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.topDiv {
+	background-image: linear-gradient(rgb(218, 218, 218), white);
+
+	h1 {
+		padding: 20px 0 30px;
+		text-align: center;
+		font-family: 'Roboto Condensed', sans-serif;
+		font-size: 60px;
+	}
+}
+
+section {
+	padding: 0 10px;
+	box-shadow: inset 0 0 10px #000000;
+
+	.cards {
+		position: relative;
+		height: 420px;
+		margin: 0 5px;
+		border: 2px solid black;
+		background-image: linear-gradient(white, white, rgb(218, 218, 218));
+		padding: 10px;
+		text-align: center;
+
+		h3 {
+			margin-bottom: 80px;
+			font-family: 'Courgette', cursive;
+			font-size: 25px;
+			text-decoration: underline;
+		}
+
+		.cardInnerContainer {
+			display: flex;
+			flex-direction: column;
+			width: 80%;
+			margin: 0 auto;
+
+			.dataLine {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+				justify-content: space-between;
+				padding: 16px 0;
+				font-size: 18px;
+				font-family: 'Source Sans Pro', sans-serif;
+				color: black;
+				transition: color 0.3s ease-in-out;
+
+				&:nth-child(2):hover {
+					cursor: pointer;
+					color: blue;
+				}
+
+				.cardKeys {
+					font-weight: 700;
+				}
+
+				.cardValues {
+					font-style: italic;
+				}
+			}
+
+			.dataLine.list {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+				justify-content: space-between;
+				padding: 16px 0;
+
+				.cardValues {
+					text-align: start;
+				}
+			}
+		}
+
+		.percentage {
+			position: absolute;
+			top: 50px;
+			right: 0;
+			font-size: 35px;
+			padding: 10px 30px 10px 10px;
+			color: white;
+			border-radius: 50px 0 0 50px;
+
+			&.red {
+				background: red;
+				box-shadow: $badge-shadow;
+			}
+
+			&.green {
+				background: green;
+				box-shadow: $badge-shadow;
+			}
+		}
+
+		&#card2 {
+			background-image: linear-gradient(rgb(250, 244, 228),  rgb(182, 163, 111));
+			box-shadow: 0 0 10px rgb(0, 0, 255);
+			animation-name: shadowAnimation;
+  		animation-duration: 5s;
+  		animation-iteration-count: infinite;
+		}
+	}
+}
+
+.bottomDiv {
+	margin-top: 50px;
+	padding-bottom: 20px;
+	width: 100%;
+	text-align: center;
+	
+	#orderBtn {
+		outline: none;
+		border: 1px solid black;
+		border-radius: 5px;
+		padding: 10px 20px;
+		background: rgb(218, 218, 218);
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 16px;
+		font-weight: 700;
+		transition: background 0.3s ease-in-out;
+
+		&:hover {
+			background: rgb(235, 235, 235);
+			cursor: pointer;
+		}
+
+		&:active {
+			background: rgb(173, 173, 173);
+			cursor: pointer;
+		}
+	}
+}
+
+@keyframes shadowAnimation {
+  0%   {box-shadow: 0 0 10px rgb(0, 0, 255);}
+  50%  {box-shadow: 0 0 10px rgba(0, 0, 255, 0);}
+  100% {box-shadow: 0 0 10px rgb(0, 0, 255)}
+}
+
+/*RESPONSIVE SETTINGS*/
+
+@media only screen and (max-width: 1250px) {
+	section {
+
+		.cards{
+
+			.cardInnerContainer {
+				width: 95%;
+	
+				.dataLine:not(:last-child) {
+					flex-direction: column;
+					justify-content: center;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.topDiv {
+
+		h1 {
+			font-size: 35px;
+		}
+	}
+
+	section {
+
+		.cards{
+
+			h3 {
+				font-size: 7vw;
+			}
+
+			.cardInnerContainer {
+				width: 95%;
+	
+				.dataLine, .dataLine:not(:last-child)  {
+					flex-direction: row;
+					justify-content: space-between;
+					font-size: 25px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.topDiv {
+
+		h1 {
+			font-size: 25px;
+		}
+	}
+
+	section {
+
+		.cards{
+
+			.cardInnerContainer {
+	
+				.dataLine {
+					font-size: 20px;
+
+					&:not(:last-child)  {
+						flex-direction: column;
+						flex-wrap: wrap;
+						justify-content: space-between;
+						font-size: 20px;
+					}
+				}
+			}
+
+			.percentage {
+				font-size: 30px;
+			}
+		}
+	}
+
+	.slick-dots {
+		bottom: -40px
+	}
+}
